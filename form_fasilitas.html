@@ -1,0 +1,142 @@
+<!-- <?php
+// Proses form jika disubmit
+if (isset($_POST['submit'])) {
+    $nama       = $_POST['nama'];
+    $deskripsi  = $_POST['deskripsi'];
+
+    // Upload foto
+    $foto_name = $_FILES['foto']['name'];
+    $foto_tmp  = $_FILES['foto']['tmp_name'];
+    $folder    = "uploads/";
+
+    // Buat folder uploads jika belum ada
+    if (!file_exists($folder)) {
+        mkdir($folder, 0777, true);
+    }
+    
+    // Pindahkan file ke folder uploads
+    $path_file = $folder . basename($foto_name);
+    if (move_uploaded_file($foto_tmp, $path_file)) {
+        // Simpan data ke database
+        $sql = "INSERT INTO fasilitas (nama, deskripsi, foto) VALUES ('$nama', '$deskripsi', '$foto_name')";
+        if ($conn->query($sql) === TRUE) {
+            echo "<p style='color:green;'>Data berhasil disimpan!</p>";
+        } else {
+            echo "Error: " . $conn->error;
+        }
+    } else {
+        echo "<p style='color:red;'>Gagal upload foto.</p>";
+    }
+}
+?> -->
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Fasilitas</title>
+
+    <!-- SB Admin 2 CSS -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+</head>
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fas fa-laugh-wink"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3">Situ Pengasinan</div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item">
+                <a class="nav-link" href="admin.html">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span></a>
+            </li>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link" href="form_fasilitas.html">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Fasilitas</span>
+                </a>
+            </li>
+
+            <!-- Nav Item - Utilities Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="form_berita.html">
+                    <i class="fas fa-fw fa-newspaper"></i>
+                    <span>Berita</span>
+                </a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+        </ul>
+        <!-- End of Sidebar -->
+         
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content" class="p-4">
+                <div class="container">
+
+                    <h1 class="h3 mb-4 text-gray-800">Form Input Fasilitas</h1>
+
+                    <!-- <?php if (!empty($alert)) echo $alert; ?> -->
+
+                    <div class="card shadow mb-4">
+                        <div class="card-body">
+                            <form action=""  enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <label>Nama Fasilitas</label>
+                                    <input type="text" name="nama" class="form-control" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Deskripsi</label>
+                                    <textarea name="deskripsi" class="form-control" rows="4" required></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Upload Foto</label>
+                                    <input type="file" name="foto" class="form-control-file" accept="image/*" required>
+                                </div>
+
+                                <button type="submit" name="submit" class="btn btn-primary">
+                                    <i class="fas fa-save"></i> Upload
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- SB Admin 2 JS -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="js/sb-admin-2.min.js"></script>
+
+</body>
+</html>

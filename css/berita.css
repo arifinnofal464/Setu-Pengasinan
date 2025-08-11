@@ -1,0 +1,61 @@
+html{
+    scroll-behavior: smooth;
+  }
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f4f4f4;
+  color: #333;
+}
+
+header {
+  background: #00897b;
+  color: white;
+  padding: 15px;
+  text-align: center;
+}
+
+header h1{
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+header a{
+  color: white;
+  font-size: 0.8rem;
+}
+
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 0 15px;
+}
+
+.berita {
+  margin-top: 20px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  text-align: center; /* gambar & teks di tengah */
+  padding-bottom: 15px;
+}
+
+.berita img {
+  width: 100%;
+  max-width: 500px; /* supaya tidak terlalu besar */
+  display: block;
+  margin: 0 auto; /* center horizontal */
+  border-radius: 3%;
+  margin-top: 25px;
+}
+
+.berita h2 {
+  margin: 15px 0 10px;
+  color: #00897b;
+}
+
+.berita p {
+  margin: 0 auto;
+  padding: 0 20px;
+  line-height: 1.6;
+  max-width: 700px;
+}
